@@ -32,6 +32,8 @@ CHECK (
 ) 
 
 -- Consulta base equivalente
-SELECT COUNT(idReserva) 
-FROM usuarioCliente u INNER JOIN reserva r ON u.idUsuario=r.idUsuario_Cliente 
-GROUP BY u.idUsuario, EXTRACT(YEAR FROM(fechaInicio)) 
+SELECT u.idUsuario, YEAR(r.fechaInicio) AS anio, COUNT(r.idReserva) AS cant_reservas
+FROM Usuario_cliente u
+INNER JOIN Reserva r ON u.idUsuario = r.idUsuarioCliente
+GROUP BY u.idUsuario, YEAR(r.fechaInicio)
+HAVING COUNT(r.idReserva) > 10;
