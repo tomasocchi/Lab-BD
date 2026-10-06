@@ -1,0 +1,1 @@
+ALTER TABLE usuario_cliente ADD COLUMN cantidadReservasAnio INT NOT NULL DEFAULT 0
